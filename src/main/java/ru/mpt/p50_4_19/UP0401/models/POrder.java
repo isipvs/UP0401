@@ -2,8 +2,10 @@ package ru.mpt.p50_4_19.UP0401.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ordr")
@@ -17,11 +19,11 @@ public class POrder {
     @Column(name = "note")
     private String note;
 
-    @Column(name = "dbeg")
-    private LocalDate dBeg;
+    @Column(name = "dtbeg")
+    private LocalDateTime dtBeg;
 
-    @Column(name = "dend")
-    private LocalDate dEnd;
+    @Column(name = "dtend")
+    private LocalDateTime dtEnd;
 
     @Column(name="mcost")
     private BigDecimal mcost;
@@ -34,18 +36,18 @@ public class POrder {
     @JoinColumn(name = "id_empl", referencedColumnName="id_empl")
     private PEmpl empl;
 
-    public PCus getCus() {
-        return cus;
-    }
-    public void setCus(PCus cus) {
-        this.cus = cus;
-    }
-
     public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public PCus getCus() {
+        return cus;
+    }
+    public void setCus(PCus cus) {
+        this.cus = cus;
     }
 
     public String getNote() {
@@ -55,18 +57,18 @@ public class POrder {
         this.note = note;
     }
 
-    public LocalDate getDBeg() {
-        return dBeg;
+    public LocalDateTime getDtBeg() {
+        return dtBeg;
     }
-    public void setDBeg(LocalDate dBeg) {
-        this.dBeg = dBeg;
+    public void setDtBeg(LocalDateTime dBeg) {
+        this.dtBeg = dBeg;
     }
 
-    public LocalDate getDEnd() {
-        return dEnd;
+    public LocalDateTime getDtEnd() {
+        return dtEnd;
     }
-    public void setDEnd(LocalDate dEnd) {
-        this.dEnd = dEnd;
+    public void setDtEnd(LocalDateTime dEnd) {
+        this.dtEnd = dEnd;
     }
 
     public BigDecimal getMCost() {
@@ -81,5 +83,9 @@ public class POrder {
     }
     public void setEmpl(PEmpl empl) {
         this.empl = empl;
+    }
+
+    public String getStatusName() {
+        return "<not impl>";
     }
 }
