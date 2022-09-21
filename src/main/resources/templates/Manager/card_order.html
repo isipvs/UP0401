@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Карточка заказа</title>
+        <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+    </head>
+
+    <header th:insert="blocks/HeaderManager" :: Header>
+    </header>
+    <main>
+      <center>
+        <body class="DarkThemeBody">
+        <h2>Карточка заказа</h2>
+
+        <div class="shadow-5-strong p-5 mb-5 rounded" style="width:50%; padding:10px;margin-top:50px;
+                 border:1px solid white;border-radius:3%">
+              <div class="orders">
+                <div class="example-1">
+                  <h4 class="example-1-item">ID</h4>
+                  <select class="example-1-item" name="shopItemId">
+                    <div th:each="cus : ${cus_list}">
+                      <option th:text="${cus.getName()}" th:value="${cus.getId()}"></option>
+                    </div>
+                  </select>
+                  <a class="example-1-item" href="/new_cus">Новый клиент</a>
+                </div>
+                <div>
+
+                </div>
+                <div class="example-1">
+                  <h4 class="example-1-item">Примечания</h4>
+                  <input type="text" name="note" >
+                </div>
+                </form>
+
+              </div>
+        </div>
+        </body>
+      </center>
+    </main>
+</html>

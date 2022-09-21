@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="../static/css/DarkTheme.css">
+</head>
+
+<body class="DarkThemeBody">
+
+<main>
+
+
+    <center>
+
+        <div class="shadow-5-strong p-5 mb-5 rounded" style="width:450px; padding:10px;margin-top:50px;
+        border:1px solid white;border-radius:3%">
+
+            <h1 style="margin-top:25px; color:white">Авторизация</h1>
+
+            <div class="form-group" style="margin-top:10px">
+                <h5 th:if="${param.error}" style="color:tomato">
+                    Неверное имя пользователя или пароль
+                </h5>
+                <h5 th:if="${param.logout}" style="color:tomato">
+                    Вы разлогинились
+                </h5>
+                <form th:action="@{/login}" method="post" style="margin-top:5%">
+                    <div style="margin-top:25px">
+                        <h5 style="color:white">Логин:</h5>
+                        <input type="text" class="form-control" style="width: 50%; font-size:26px" name="username"/>
+                    </div>
+
+                    <div style="margin-top:25px">
+                        <h5 style="color:white">Пароль: </h5>
+                        <input type="password" class="form-control" style="width: 50%; font-size:26px" name="password"/>
+                    </div>
+
+                    <div style="margin-top:50px">
+                        <input type="submit" class="btn btn-success" style="width:20%; font-size:110%" value="Войти"/>
+                    </div>
+                </form>
+                <div style="margin-top:30px">
+                    <a href="/registration" style="color:RoyalBlue">Регистрация нового пользователя</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </center>
+
+</main>
+
+</body>
+
+<footer th:insert="blocks/Footer" :: Footer/>
+</html>

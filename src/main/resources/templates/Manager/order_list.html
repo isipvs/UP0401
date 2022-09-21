@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:flex-direction="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta charset="UTF-8">
+      <title>Список заказов</title>
+      <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+    </head>
+
+
+    <header th:insert="blocks/HeaderManager" :: Header>
+    </header>
+
+    <body class="DarkThemeBody">
+        <main>
+
+            <h1>Список заказов</h1>
+
+          <center>
+
+            <div class="shadow-5-strong p-5 mb-5 rounded" style="width:80%; padding:10px;margin-top:50px;
+                 border:1px solid white;border-radius:3%">
+
+                <!--
+                 ID
+                 Имя клиента
+                 Статус
+                 Дата
+                 Сумма
+                 Дата выполнения
+                 Примечания
+                 -->
+              <div>
+                <div class="order_list" >
+                    <table class="example-2">
+                        <tr>
+                            <td>ID</td>
+                            <td>Имя клиента</td>
+                            <td>Статус</td>
+                            <td>Дата</td>
+                            <td>Сумма</td>
+                            <td>Дата выполнеия</td>
+                            <td>Примечания</td>
+                        </tr>
+                        <div class="order" th:each="order : ${orders}">
+                            <td>
+                                    <a href="order" th:value="${order.getId()}">1</a>
+                            </td>
+                            <td>
+                                <p name="name" class="order_list_td" th:value="${order.getName()}">Иван</p>
+                            </td>
+                            <td>
+                                <p name="status" class="order_list_td" th:value="${order.getStatus()}">Выполнен</p>
+                            </td>
+                            <td>
+                                <p name="date" class="order_list_td" th:value="${order.getDate()}">01.01.2022</p>
+                            </td>
+                            <td>
+                                <p name="cash" class="order_list_td" th:value="${order.getCash()}">2000.00</p>
+                            </td>
+                            <td>
+                                <p name="date_сomplete" class="order_list_td" th:value="${order.getDate_complete()}">02.01.2022</p>
+                            </td>
+                            <td>
+                                <p name="note" class="order_list_td" th:value="${order.getNote()}">Хочу красный стул</p>
+                            </td>
+                        </div>
+                    </table>
+                </div>
+              </div>
+
+            </div>
+
+
+          </center>
+        </main>
+    </body>
+</html>

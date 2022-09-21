@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="../static/css/DarkTheme.css">
+</head>
+    <body class="DarkThemeBody">
+    <main>
+
+    <center>
+
+        <div class="shadow-5-strong p-5 mb-5 rounded" style="width:450px; padding:10px;margin-top:50px;
+        border:1px solid white;border-radius:3%">
+
+            <h1 style="margin-top:25px; color:white">Регистрация</h1>
+
+            <div class="form-group" style="margin-top:10px">
+                <h5 th:if="${param.error}" style="color:tomato">
+                    Такой Логин уже существует
+                </h5>
+                <form th:action="@{/registrtion}" method="post" style="margin-top:5%">
+
+                    <div style="margin-top:25px">
+                        <h5 style="color:white">Имя пользователя:</h5>
+                        <input type="text" class="form-control" style="width: 50%; font-size:20px" name="username"
+                               required maxlength="20"/>
+                    </div>
+
+                    <div style="margin-top:25px">
+                        <h5 style="color:white">Email:</h5>
+                        <input type="text" class="form-control" style="width: 50%; font-size:20px" name="email"
+                               required maxlength="30"/>
+                    </div>
+
+                    <div style="margin-top:25px">
+                        <h5 style="color:white">Телефон:</h5>
+                        <input type="tel" class="form-control" style="width: 50%; font-size:20px" name="phone"
+                        placeholder="+7(900)-000-00-00" required/>
+                    </div>
+
+                    <div style="margin-top:25px">
+                        <h5 style="color:white">Пароль: </h5>
+                        <input type="password" class="form-control" style="width: 50%; font-size:20px" name="password"
+                               required min="10" max="20"/>
+                    </div>
+
+                    <div style="margin-top:50px">
+                        <input type="submit" class="btn btn-success" style="width:20%; font-size:110%" value="Создать"/>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </center>
+
+</main>
+
+</body>
+
+<footer th:insert="blocks/Footer" :: Footer/>
+</html>
