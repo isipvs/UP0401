@@ -6,6 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
+@Table(name = "cus")
 public class PCus {
 
     @Id

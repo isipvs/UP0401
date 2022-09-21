@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <meta charset="UTF-8">
+      <title>Список заказов</title>
+      <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+    </head>
+
+
+    <header th:insert="blocks/HeaderManager" :: Header>
+    </header>
+
+    <body class="DarkThemeBody">
+        <main>
+
+            <h1>Список заказов</h1>
+
+          <center>
+
+            <div class="shadow-5-strong p-5 mb-5 rounded" style="width:80%; padding:10px;margin-top:50px;
+                 border:1px solid white;border-radius:3%">
+
+                <!--
+                 ID
+                 Имя клиента
+                 Статус
+                 Дата
+                 Сумма
+                 Дата выполнения
+                 Примечания
+                 -->
+              <div>
+                <div class="order_list" >
+
+<!--                    <table>-->
+<!--                        <tr>-->
+<!--                            <th>NAME</th>-->
+<!--                            <th>PRICE</th>-->
+<!--                            <th>IN STOCK</th>-->
+<!--                        </tr>-->
+<!--                        <tr th:each="prod : ${prods}">-->
+<!--                            <td th:text="${prod.name}">Onions</td>-->
+<!--                            <td th:text="${prod.price}">2.41</td>-->
+<!--                            <td th:text="${prod.inStock}? #{true} : #{false}">yes</td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+
+                    <table class="example-2">
+                        <tr>
+                            <th>ID</th>
+                            <th>Имя клиента</th>
+                            <th>Статус</th>
+                            <th>Дата приёма</th>
+                            <th>Сумма</th>
+                            <th>Дата выполнения</th>
+                            <th>Примечание</th>
+                        </tr>
+
+                        <tr class="order" th:each="order : ${order_list}">
+                            <td>
+                                <a
+                                    th:href="@{/orders/{id}(id=${order.getId()})}"
+                                    th:text="${order.getId()}">
+                                    order
+                                </a>
+                            </td>
+                            <td th:text="${order.getCus().getName()}">CusName</td>
+                            <td th:text="${order.getStatusName()}">Status</td>
+                            <td th:text="${order.getDtBeg()}">X</td>
+                            <td th:text="${order.getMCost()}">2000.00</td>
+                            <td th:text="${order.getDtEnd()}">02.01.2022</td>
+                            <td th:text="${order.getNote()}">note</td>
+                        </tr>
+                    </table>
+
+                </div>
+              </div>
+
+            </div>
+
+
+          </center>
+        </main>
+    </body>
+</html>

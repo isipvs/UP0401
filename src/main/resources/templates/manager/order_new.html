@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Заказ</title>
+  <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+</head>
+
+
+<header th:insert="blocks/HeaderManager" :: Header>
+</header>
+
+<body class="DarkThemeBody">
+<main>
+  <center>
+    <div class="shadow-5-strong p-5 mb-5 rounded"
+         style="width:50%; padding:10px;margin-top:50px; border:1px solid white;border-radius:3%">
+
+      <!--
+       Имя клиента - combobox
+       Дата        - input
+       Примечания  - combobox
+       -->
+
+        <div>
+          <h2>Заказ от </h2>
+            <form method="post">
+
+              <div class="example-1">
+<!--                <h4 class="example-1-item">Клиент</h4>-->
+
+<!--                <div class="form-group col-md-8">-->
+                  <label class="example-1-item" >Клиенты </label>
+                  <select class="example-1-item" id="cus_id" name="cus_id"> <!-- th:field="*{id}" > -->
+                    <option value="">Выберите клиента...</option>
+                    <option th:each="cus : ${cus_list}" th:value="${cus.id}" th:utext="${cus.name}"/>
+                  </select>
+<!--                </div>-->
+<!--                -->
+<!--                <select class="example-1-item" id="cus_list">-->
+<!--                  <div th:each="cus : ${cus_list}">-->
+<!--                    <option th:text="${cus.getName()}" th:value="${cus.getId()}"></option>-->
+<!--                  </div>-->
+<!--                </select>-->
+
+              <a class="example-1-item" href="cus/new">Новый клиент</a>
+              </div>
+              <div class="example-1">
+                <label class="example-1-item">Описание заказа</label>
+                <textarea name="note" id="note" placeholder="Введите текст заказа"></textarea>
+              </div>
+              <div class="example-1-item">
+                <button name="create" type="submit">Создать заказ</button>
+              </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </center>
+</main>
+</body>
+</html>

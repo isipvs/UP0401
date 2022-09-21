@@ -2,14 +2,15 @@ package ru.mpt.p50_4_19.UP0401.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Sort;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.mpt.p50_4_19.UP0401.models.PCus;
 import ru.mpt.p50_4_19.UP0401.models.PEmpl;
 import ru.mpt.p50_4_19.UP0401.models.POrder;
+import ru.mpt.p50_4_19.UP0401.repositories.CusRepository;
 import ru.mpt.p50_4_19.UP0401.repositories.OrderRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -23,16 +24,18 @@ public class OrderService {
     private PEmpl empl = new PEmpl();
 
     private final OrderRepository orderRepository;
+    private final CusRepository cusRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository) {
-        empl.setId(-1);
+    public OrderService(OrderRepository orderRepository, CusRepository cusRepository) {
+        empl.setId(1);
+        this.cusRepository = cusRepository;
         this.orderRepository = orderRepository;
     }
 
     private PEmpl getCurrentEmpl()
     {
-        return null;
+        return empl;
     }
 
     public List<POrder> findAll()
@@ -54,6 +57,16 @@ public class OrderService {
         orderRepository.save(order);
     }
 
+    public void create( int cusId, String note ) {
+
+        POrder newOrder = new POrder();
+        newOrder.setCus  ( cusRepository.findById(cusId).get() );
+        newOrder.setNote ( note);
+        newOrder.setDtBeg( LocalDateTime.now() );
+
+        save(newOrder);
+    }
+
     @Transactional
     public void delete( int id ) {
         orderRepository.deleteById(id);
@@ -65,5 +78,9 @@ public class OrderService {
         POrder order = findOne(id);
         order.setNote(note);
         save(order);
+    }
+
+    public List<PCus> getCusList() {
+        return cusRepository.findAll();
     }
 }

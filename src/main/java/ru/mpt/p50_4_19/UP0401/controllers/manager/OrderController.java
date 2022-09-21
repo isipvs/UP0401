@@ -24,37 +24,40 @@ public class OrderController {
     public String orderList( Model model )
     {
         model.addAttribute("order_list", orderService.findAll() );
-        return "order_list";
+        return "manager/order_list";
     }
 
     @GetMapping("/new")
-    public String getForm_NewOrder(@ModelAttribute("order") POrder order )
+    public String getForm_NewOrder( Model model )
     {
-        return "order/new";
+        model.addAttribute("cus_list", orderService.getCusList() );
+        return "manager/order_new";
     }
 
-    @PostMapping
-    public String createOrder( @ModelAttribute("order") @Valid POrder order, BindingResult bindingResult )
+    @PostMapping("/new")
+    public String createOrder(
+            @PathVariable("cus_id") int id,
+            @PathVariable("note"  ) String note
+        )
     {
-        if( bindingResult.hasErrors() )
-            return "order/new";
+//        if( bindingResult.hasErrors() )
+//            return "manager/order_new";
+        orderService.create(id, note);
 
-
-        orderService.save(order);
-        return "redirect:/list";
+        return "redirect:/orders/list";
     }
 
     @GetMapping("/{id}/page")
     public String orderInfo( Model model, @PathVariable("id") int id )
     {
         model.addAttribute("order", orderService.findOne(id));
-        return "order/order_page";
+        return "manager/card_order";
     }
 
     @DeleteMapping("/{id}")
     public String delete( @PathVariable("id") int id )
     {
         orderService.delete(id);
-        return "redirect:/list";
+        return "redirect:/orders/list";
     }
 }
