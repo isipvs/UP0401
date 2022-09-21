@@ -1,6 +1,7 @@
 package ru.mpt.p50_4_19.UP0401.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class OrderService {
+
+    @Value("${app.title}")
+    private String title;
 
     private PEmpl empl = new PEmpl();
 
