@@ -1,4 +1,4 @@
-package com.example.UP0401;
+package ru.mpt.p50_4_19.UP0401;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

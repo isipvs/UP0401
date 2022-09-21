@@ -1,4 +1,4 @@
-package com.example.UP0401.models;
+package ru.mpt.p50_4_19.UP0401.models;
 
 import javax.persistence.*;
 
@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class POrdrSt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(name = "name")
     private String name;
@@ -22,7 +21,6 @@ public class POrdrSt {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
