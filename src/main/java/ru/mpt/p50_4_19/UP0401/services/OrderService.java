@@ -57,12 +57,14 @@ public class OrderService {
         orderRepository.save(order);
     }
 
+    @Transactional
     public void create( int cusId, String note ) {
 
         POrder newOrder = new POrder();
         newOrder.setCus  ( cusRepository.findById(cusId).get() );
         newOrder.setNote ( note);
         newOrder.setDtBeg( LocalDateTime.now() );
+        newOrder.setStatus(1);
 
         save(newOrder);
     }

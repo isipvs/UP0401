@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <meta charset="UTF-8">
+      <title>Список заказов</title>
+      <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+    </head>
+    <header th:insert="blocks/HeaderManager" :: Header></header>
+
+    <body class="DarkThemeBody">
+        <main>
+            <h1>Список предметов на реставрацию</h1>
+            <h2 th:text="'Мастер: ' + empl_name">Имя мастера</h2>
+            <center>
+            <div class="shadow-5-strong p-5 mb-5 rounded" style="width:80%; padding:10px;margin-top:50px;
+                 border:1px solid white;border-radius:3%">
+                <div>
+                <div class="order_list" >
+
+                    <table class="example-2">
+                        <tr>
+                            <th>ID</th>
+                            <th>Тип мебели</th>
+                            <th>Название</th>
+                            <th>Дата начала</th>
+                            <th>Дата окончания</th>
+                            <th>Примечание</th>
+                        </tr>
+                        <tr class="order" th:each="item : ${item_list}">
+                            <td th:text="${item.getId()}">Id</td>
+                            <td th:text="${item.getTypeName()}">typeName</td>
+                            <td th:text="${item.getName()}">name</td>
+                            <td th:text="${order.getDtBeg()}">db</td>
+                            <td th:text="${order.getDtEnd()}">de</td>
+                            <td th:text="${order.getNote()}">note</td>
+                            <td><button name="close" id="close">X</button></td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+          </center>
+        </main>
+    </body>
+</html>

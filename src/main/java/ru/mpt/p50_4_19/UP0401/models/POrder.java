@@ -36,6 +36,9 @@ public class POrder {
     @JoinColumn(name = "id_empl", referencedColumnName="id_empl")
     private PEmpl empl;
 
+    @Column(name="status")
+    private Integer status;
+
     public Integer getId() {
         return id;
     }
@@ -76,6 +79,13 @@ public class POrder {
     }
     public void setMCost(BigDecimal mcost) {
         this.mcost = mcost;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public PEmpl getEmpl() {
