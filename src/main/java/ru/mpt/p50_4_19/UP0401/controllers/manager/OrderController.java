@@ -1,15 +1,11 @@
 package ru.mpt.p50_4_19.UP0401.controllers.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.mpt.p50_4_19.UP0401.models.POrder;
 import ru.mpt.p50_4_19.UP0401.services.OrderService;
 
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 
 @Controller
@@ -36,20 +32,22 @@ public class OrderController {
     {
         model.addAttribute("cus_list", orderService.getCusList());
         model.addAttribute("cur_date", LocalDateTime.now()      );
+        model.addAttribute("url", "/orders");
         return "manager/order_new";
     }
 
-    @PostMapping()
+    //@PostMapping()
+    @GetMapping("/create")
     public String createOrder(
-            @PathVariable("cus_id") int id,
-            @PathVariable("note"  ) String note
+            @RequestParam("cus_id") int id,
+            @RequestParam("note"  ) String note
         )
     {
 //        if( bindingResult.hasErrors() )
 //            return "manager/order_new";
         orderService.create(id, note);
 
-        return "redirect:/orders/list";
+        return "redirect:/orders";
     }
 
     @GetMapping("/{id}/page")
