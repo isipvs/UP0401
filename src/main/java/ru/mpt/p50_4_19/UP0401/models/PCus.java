@@ -31,6 +31,15 @@ public class PCus {
 //    @OneToOne
 //    private PUsr usr;
 
+    public PCus() {
+    }
+
+    public PCus(String name, String email, String phone) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public Integer getId() {
         return id;
     }

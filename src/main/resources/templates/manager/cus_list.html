@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <meta charset="UTF-8">
+      <title>Карточка клиента</title>
+      <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+    </head>
+
+    <header th:insert="blocks/HeaderManager" :: Header>
+    </header>
+
+
+    <body class="DarkThemeBody">
+        <main>
+            <h1>Список клиентов</h1>
+            <center>
+                <div class="shadow-5-strong p-5 mb-5 rounded"
+                     style="width:85%; padding:5px;margin-top:40px; border:1px solid white;border-radius:3%">
+                    <!--
+                    Имя
+                    email
+                    phone
+                    -->
+
+                    <div>
+                        <form method="post" action="/orders">
+                            <div class="example-1">
+                                <label  class="example-1-item">Клиенты</label>
+                                <input  type="text"/>
+                                <label  class="example-1-item">Email</label>
+                                <input  type="email" />
+                                <label  class="example-1-item">Телефон</label>
+                                <input  type="tel" />
+                                <button class="example-1-item" type="submit" style="margin-left: 20px">Добавить клиента</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="shadow-5-strong p-5 mb-5 rounded"
+                style="width:75%; padding:10px;margin-top:50px; border:1px solid white;border-radius:3%">
+                    <table>
+                        <thead>
+                            <th>ID</th>
+                            <th>Имя</th>
+                            <th>Телефон</th>
+                            <th>Email</th>
+                            <th>Изменить</th>
+                            <th>Удаить</th>
+                        </thead>
+                        <tbody th:each="cus : ${cus_list}">
+                            <td th:text="${cus.getId()}"></td>
+                            <td th:text="${cus.getName()}"></td>
+                            <td th:text="${cus.getPhone}"></td>
+                            <td th:text="${cus.getEmail()}"></td>
+                            <td>
+                               <button>Изменить</button>
+                            </td>
+                            <td>
+                                <button>Удалить</button>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </center>
+        </main>
+    </body>
+</html>
