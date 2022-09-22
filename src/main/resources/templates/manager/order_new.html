@@ -23,8 +23,9 @@
        -->
 
         <div>
-          <h2>Заказ от </h2>
-            <form method="post">
+          <h2 th:text="'Заказ от ' + ${cur_date}">Заказ от </h2>
+
+            <form method="post" action="/orders">
 
               <div class="example-1">
 <!--                <h4 class="example-1-item">Клиент</h4>-->
@@ -47,10 +48,13 @@
               </div>
               <div class="example-1">
                 <label class="example-1-item">Описание заказа</label>
-                <textarea name="note" id="note" placeholder="Введите текст заказа"></textarea>
               </div>
+                <div class="example-1">
+                <textarea class="example-1-item" name="note" id="note" style="width: 90%"
+                          placeholder="Введите текст заказа"></textarea>
+                </div>
               <div class="example-1-item">
-                <button name="create" type="submit">Создать заказ</button>
+                <button type="submit">Создать заказ</button>
               </div>
           </form>
 

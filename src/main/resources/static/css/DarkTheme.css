@@ -4,6 +4,17 @@ div {
     font-family: MailSans, Helvetica, Arial, sans-serif;
 }
 
+input{
+    margin: 5px;
+}
+
+main{
+    width: 1000px;
+    position: absolute;
+    left: 50%;
+    margin-left: -500px;
+}
+
 td {
     color: lightgray;
     padding: 5px;
