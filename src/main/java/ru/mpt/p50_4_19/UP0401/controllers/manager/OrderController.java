@@ -10,6 +10,7 @@ import ru.mpt.p50_4_19.UP0401.models.POrder;
 import ru.mpt.p50_4_19.UP0401.services.OrderService;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("/orders")
@@ -20,21 +21,25 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    @GetMapping("/list")
+
+    // Получаем списко всех заказов
+    @GetMapping()
     public String orderList( Model model )
     {
         model.addAttribute("order_list", orderService.findAll() );
         return "manager/order_list";
     }
 
+    //Возращаем форму для заведения нового заказа
     @GetMapping("/new")
     public String getForm_NewOrder( Model model )
     {
-        model.addAttribute("cus_list", orderService.getCusList() );
+        model.addAttribute("cus_list", orderService.getCusList());
+        model.addAttribute("cur_date", LocalDateTime.now()      );
         return "manager/order_new";
     }
 
-    @PostMapping("/new")
+    @PostMapping()
     public String createOrder(
             @PathVariable("cus_id") int id,
             @PathVariable("note"  ) String note

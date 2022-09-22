@@ -28,6 +28,9 @@ public class PCus {
     @OneToMany(mappedBy = "cus")
     private List<POrder> orderList;
 
+    @OneToOne
+    private PUsr usr;
+
     public Integer getId() {
         return id;
     }
