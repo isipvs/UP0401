@@ -27,6 +27,13 @@ public class CusController {
         return "manager/cus_list";
     }
 
+    //Возращаем форму для заведения нового заказа
+    @GetMapping("/new")
+    public String getForm_NewCus( Model model )
+    {
+        return "manager/card_cus";
+    }
+
 
     @PostMapping()
     public String createCus(
@@ -40,6 +47,7 @@ public class CusController {
         cusService.create(name, email, phone);
         return "redirect:/customers";
     }
+
 
 
     @DeleteMapping("/{id}")
