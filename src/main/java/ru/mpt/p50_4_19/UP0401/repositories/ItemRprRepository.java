@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ItemRprRepository extends JpaRepository<PItemRpr, Integer> {
 
-    List<PItemRpr> findByEmplId(int emplId );
+    List<PItemRpr> findByEmplIdOrderByDtEnd(int emplId );
 }

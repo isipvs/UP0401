@@ -2,17 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
       <meta charset="UTF-8">
-      <title>Список заказов</title>
-      <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+      <title>Предметы мебели на реставрацию</title>
+      <link rel="stylesheet" href="css/DarkTheme.css">
     </head>
-    <header th:insert="blocks/HeaderManager" :: Header></header>
-
     <body class="DarkThemeBody">
         <main>
-            <h1>Список предметов на реставрацию</h1>
-            <h2 th:text="'Мастер: ' + empl_name">Имя мастера</h2>
-            <center>
-            <div class="shadow-5-strong p-5 mb-5 rounded" style="width:80%; padding:10px;margin-top:50px;
+            <h2>Список предметов на реставрацию</h2>
+            <h3 th:text="${'Мастер: ' + empl_name}">Имя мастера</h3>
+<!--            <center>-->
+            <div class="shadow-5-strong p-5 mb-5 rounded"
+                 style="padding:10px;margin-top:10px;
                  border:1px solid white;border-radius:3%">
                 <div>
                 <div class="order_list" >
@@ -22,24 +21,56 @@
                             <th>ID</th>
                             <th>Тип мебели</th>
                             <th>Название</th>
-                            <th>Дата начала</th>
-                            <th>Дата окончания</th>
                             <th>Примечание</th>
+                            <th>Дата начала</th>
+                            <th>Дата завершения</th>
                         </tr>
                         <tr class="order" th:each="item : ${item_list}">
                             <td th:text="${item.getId()}">Id</td>
                             <td th:text="${item.getTypeName()}">typeName</td>
                             <td th:text="${item.getName()}">name</td>
-                            <td th:text="${order.getDtBeg()}">db</td>
-                            <td th:text="${order.getDtEnd()}">de</td>
-                            <td th:text="${order.getNote()}">note</td>
-                            <td><button name="close" id="close">X</button></td>
+                            <td th:text="${item.getNote()}">note</td>
+                            <td>
+                                <span th:if="${item.isWaiting()}">
+                                    <a
+                                        th:href="@{/rpr_items/{id}/take(id=${item.getId()})}">В работу
+                                    </a>
+                                </span>
+                                <span th:unless="${item.isWaiting}">
+                                     <span th:text="${item.getDtBeg()}" style="color: darkseagreen"/>
+                                </span>
+                            </td>
+                            <td>
+                                <span th:switch="${item.getStatus()}">
+                                    <span th:case="1"></span>
+                                    <span th:case="2">
+                                        <a th:href="@{/rpr_items/{id}/close(id=${item.getId()})}">Завершить</a>
+                                    </span>
+                                    <span th:case="3">
+                                        <span th:text="${item.getDtEnd()}" style="color: lightcoral"/>
+                                        <a href="">></a>
+                                    </span>
+                                </span>
+
+                                <!--
+                                <span th:if="${!item.isClosed}">
+                                    <a th:href="@{/rpr_items/{id}/close(id=${item.getId()})}">
+                                        Завершить
+                                    </a>
+                                </span>
+                                <span th:unless="${!item.isClosed}">
+                                    <span th:text="${item.getDtEnd()}" style="color: lightcoral"/>
+                                </span>
+
+                                -->
+
+                            </td>
                         </tr>
                     </table>
                 </div>
                 </div>
             </div>
-          </center>
+<!--          </center>-->
         </main>
     </body>
 </html>

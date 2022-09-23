@@ -31,12 +31,13 @@ public class PItemRpr {
     @Column(name = "dtend")
     private LocalDateTime dtEnd;
 
-    public PItemRpr( ) {
+    public PItemRpr() {
     }
 
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -44,6 +45,7 @@ public class PItemRpr {
     public Integer getTypeId() {
         return typeId;
     }
+
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
     }
@@ -51,6 +53,7 @@ public class PItemRpr {
     public Integer getEmplId() {
         return emplId;
     }
+
     public void setEmplId(Integer emplId) {
         this.emplId = emplId;
     }
@@ -58,6 +61,7 @@ public class PItemRpr {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -65,6 +69,7 @@ public class PItemRpr {
     public String getNote() {
         return note;
     }
+
     public void setNote(String note) {
         this.note = note;
     }
@@ -72,6 +77,7 @@ public class PItemRpr {
     public LocalDateTime getDtBeg() {
         return dtBeg;
     }
+
     public void setDtBeg(LocalDateTime dtBeg) {
         this.dtBeg = dtBeg;
     }
@@ -79,6 +85,7 @@ public class PItemRpr {
     public LocalDateTime getDtEnd() {
         return dtEnd;
     }
+
     public void setDtEnd(LocalDateTime dtEnd) {
         this.dtEnd = dtEnd;
     }
@@ -86,7 +93,29 @@ public class PItemRpr {
     public String getTypeName() {
         return typeName;
     }
+
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
+
+    @Transient
+    public boolean isClosed() {
+        return getDtEnd() != null;
+    }
+
+    @Transient
+    public boolean isWaiting() {
+        return getDtBeg() == null;
+    }
+
+    @Transient
+    public int getStatus()
+    {
+        if( getDtBeg() == null )
+            return 1;
+        if( getDtEnd() == null )
+            return 2;
+        return 3;
+    }
+
 }

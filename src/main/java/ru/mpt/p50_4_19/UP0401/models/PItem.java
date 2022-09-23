@@ -1,5 +1,7 @@
 package ru.mpt.p50_4_19.UP0401.models;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -20,14 +22,15 @@ public class PItem {
     @Column(name = "note", nullable = true)
     private String note;
 
-    @Column(name = "dtBeg")
+    @Column(name = "dtbeg")
     private LocalDateTime dtBeg;
 
-    @Column(name = "dtEnd")
+    @Column(name = "dtend")
     private LocalDateTime dtEnd;
 
     @ManyToOne
     @JoinColumn(name = "id_empl", referencedColumnName="id_empl")
+    @Lazy
     private PEmpl empl;
 
     public PItem( ) {
@@ -80,5 +83,11 @@ public class PItem {
     }
     public void setEmpl(PEmpl empl) {
         this.empl = empl;
+    }
+
+    @Transient
+    public boolean isClosed()
+    {
+        return getDtEnd() != null;
     }
 }
