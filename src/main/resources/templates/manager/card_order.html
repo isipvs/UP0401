@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Карточка заказа</title>
-        <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+        <link rel="stylesheet" href="css/DarkTheme.css">
     </head>
-
-    <header th:insert="blocks/HeaderManager" :: Header>
-    </header>
     <main>
+        <header th:insert="blocks/HeaderManager" :: Header>
+        </header>
       <center>
-        <body class="DarkThemeBody">
+        <body class="darkThemeBody">
         <h2>Карточка заказа</h2>
 
         <div class="shadow-5-strong p-5 mb-5 rounded" style="width:50%; padding:10px;margin-top:50px;

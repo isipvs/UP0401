@@ -27,6 +27,7 @@ public class CusController {
         return "manager/cus_list";
     }
 
+
     @PostMapping()
     public String createCus(
             @PathVariable("name"  ) String name,

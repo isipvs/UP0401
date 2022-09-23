@@ -3,22 +3,22 @@
     <head>
       <meta charset="UTF-8">
       <title>Список заказов</title>
-      <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+      <link rel="stylesheet" href="css/DarkTheme.css">
     </head>
 
 
     <header th:insert="blocks/HeaderManager" :: Header>
     </header>
 
-    <body class="DarkThemeBody">
+    <body class="darkThemeBody">
         <main>
 
             <h1>Список заказов</h1>
 
-          <center>
 
-            <div class="shadow-5-strong p-5 mb-5 rounded" style="width:80%; padding:10px;margin-top:50px;
-                 border:1px solid white;border-radius:3%">
+
+            <div class="shadow-5-strong rounded" style=" padding:20px;margin-top:20px;
+                 border:1px solid white;border-radius:5% ">
 
                 <!--
                  ID
@@ -31,19 +31,6 @@
                  -->
               <div>
                 <div class="order_list" >
-
-<!--                    <table>-->
-<!--                        <tr>-->
-<!--                            <th>NAME</th>-->
-<!--                            <th>PRICE</th>-->
-<!--                            <th>IN STOCK</th>-->
-<!--                        </tr>-->
-<!--                        <tr th:each="prod : ${prods}">-->
-<!--                            <td th:text="${prod.name}">Onions</td>-->
-<!--                            <td th:text="${prod.price}">2.41</td>-->
-<!--                            <td th:text="${prod.inStock}? #{true} : #{false}">yes</td>-->
-<!--                        </tr>-->
-<!--                    </table>-->
 
                     <table class="example-2">
                         <tr>
@@ -72,14 +59,12 @@
                             <td th:text="${order.getNote()}">note</td>
                         </tr>
                     </table>
-
+                    
                 </div>
               </div>
 
             </div>
 
-
-          </center>
         </main>
     </body>
 </html>

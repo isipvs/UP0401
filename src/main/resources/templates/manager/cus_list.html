@@ -2,46 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
       <meta charset="UTF-8">
-      <title>Карточка клиента</title>
-      <link rel="stylesheet" href="../../static/css/DarkTheme.css">
+      <title>Список клиентов</title>
+      <link rel="stylesheet" href="css/DarkTheme.css">
     </head>
 
     <header th:insert="blocks/HeaderManager" :: Header>
     </header>
 
+    <body class="darkThemeBody">
+    <main>
+        <center>
 
-    <body class="DarkThemeBody">
-        <main>
-            <h1>Список клиентов</h1>
-            <center>
-                <div class="shadow-5-strong p-5 mb-5 rounded"
-                     style="width:85%; padding:5px;margin-top:40px; border:1px solid white;border-radius:3%">
-                    <!--
-                    Имя
-                    email
-                    phone
-                    -->
 
-                    <div>
-                        <form method="post" action="/orders">
-                            <div class="example-1">
-                                <label  class="example-1-item">Клиенты</label>
-                                <input  type="text"/>
-                                <label  class="example-1-item">Email</label>
-                                <input  type="email" />
-                                <label  class="example-1-item">Телефон</label>
-                                <input  type="tel" />
-                                <button class="example-1-item" type="submit" style="margin-left: 20px">Добавить клиента</button>
-                            </div>
-                        </form>
-
-                    </div>
-
-                </div>
 
                 <div class="shadow-5-strong p-5 mb-5 rounded"
-                style="width:75%; padding:10px;margin-top:50px; border:1px solid white;border-radius:3%">
-                    <table>
+                style="width:80%; padding:10px;margin-top:50px; border:1px solid white;border-radius:3%">
+                    <table class="example-2">
                         <thead>
                             <th>ID</th>
                             <th>Имя</th>

@@ -8,7 +8,7 @@ input{
     margin: 5px;
 }
 
-main{
+.mainclass{
     width: 1000px;
     position: absolute;
     left: 50%;
@@ -43,9 +43,8 @@ th {
     color: gray;
 }
 
-.DarkThemeBody{
+.darkThemeBody{
     background: #323232;
-
 }
 
 main{
